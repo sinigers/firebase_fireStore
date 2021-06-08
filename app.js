@@ -28,17 +28,7 @@ function renderCafe(doc){
     })
 }
 
-// get  data from collection and creat snapshot
-// orderBy sorts info by condition alphabeticaly. first Capital letters - lower.
-// If add query/where/ and ordering/orederBy/ - somethimes fire base give error. Should create index in FBase from browser console
-db.collection('cafes').orderBy('city').get().then((snapshot) => {
-    // console.log(snapshot.docs);
-    snapshot.docs.forEach(doc =>{
-        // console.log(doc.data());
-        renderCafe(doc);
-    })
-}); 
-// then()- when information is geted from db
+
 
 // saving data
 form.addEventListener('submit', (ev) => {
@@ -50,4 +40,20 @@ form.addEventListener('submit', (ev) => {
     // clear form fealds
     form.name.value='';
     form.city.value='';
+});
+
+// real time listener. if db changes get them or remove 
+db.collection('cafes').orderBy('city').onSnapshot(snapshot =>{
+    let changes=snapshot.docChanges();
+    // console.log(changes);
+    changes.forEach(change => {
+        //  console.log(change.doc.data());
+        if(change.type == 'added'){
+            renderCafe(change.doc)
+        } else if(change.type == 'removed'){
+            let li = cafeList.querySelector('[data-id=' + change.doc.id +']');
+            cafeList.removeChild(li);
+        }
+    });
+
 })
