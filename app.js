@@ -29,8 +29,9 @@ function renderCafe(doc){
 }
 
 // get  data from collection and creat snapshot
-// where get info by condition - ('city', '==', 'Varna')
-db.collection('cafes').where('city', '==', 'Varna').get().then((snapshot) => {
+// orderBy sorts info by condition alphabeticaly. first Capital letters - lower.
+// If add query/where/ and ordering/orederBy/ - somethimes fire base give error. Should create index in FBase from browser console
+db.collection('cafes').orderBy('city').get().then((snapshot) => {
     // console.log(snapshot.docs);
     snapshot.docs.forEach(doc =>{
         // console.log(doc.data());
