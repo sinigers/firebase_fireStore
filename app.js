@@ -29,7 +29,8 @@ function renderCafe(doc){
 }
 
 // get  data from collection and creat snapshot
-db.collection('cafes').get().then((snapshot) => {
+// where get info by condition - ('city', '==', 'Varna')
+db.collection('cafes').where('city', '==', 'Varna').get().then((snapshot) => {
     // console.log(snapshot.docs);
     snapshot.docs.forEach(doc =>{
         // console.log(doc.data());
