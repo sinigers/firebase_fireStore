@@ -57,3 +57,8 @@ db.collection('cafes').orderBy('city').onSnapshot(snapshot =>{
     });
 
 })
+
+// to change name  select by .doc('id')  using .update can change 1 of property, without changing other; using .set change all properties document in firebase
+db.collection('cafes').doc('Lz6jEdfKVGtobzaW927s').update({
+    name:'Mario coffe'
+})
