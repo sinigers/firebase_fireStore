@@ -4,6 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- The core Firebase JS SDK is always required and must be listed first. Load firestore sevice only - ..firebase-firestore.js. Load all firebase ... firebase-app.js -->
+    <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-firestore.js"></script>
     <link rel="stylesheet" href="styles.css">
     <title>Document</title>
 </head>
@@ -20,6 +23,34 @@
 
     </div>
 
+
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-app.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use . This is for Analytics.
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-analytics.js"></script>
+
+    <script>
+        // Your web app's Firebase configuration
+        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+        var firebaseConfig = {
+            apiKey: "AIzaSyCZmzrmIsh1YhS_uiDMTJMnmNpkEWBQxak",
+            authDomain: "firestore-basic-1a9c9.firebaseapp.com",
+            projectId: "firestore-basic-1a9c9",
+            storageBucket: "firestore-basic-1a9c9.appspot.com",
+            messagingSenderId: "828277286742",
+            appId: "1:828277286742:web:38dd93f0e0c1e61aa358f7",
+            measurementId: "G-J8BJ8JQ1ZS"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        const db = firebase.firestore();
+        db.settings({
+            timestampsInSnapshots: true
+        });
+        firebase.analytics();
+    </script>
     <script src="app.js"></script>
 </body>
 
